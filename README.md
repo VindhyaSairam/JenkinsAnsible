@@ -1,2 +1,2 @@
-# JenkinsAnsible
-test the integration between jenkins and ansible
+# java-project
+Java Project for Jenkins Course
