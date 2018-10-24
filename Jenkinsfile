@@ -37,14 +37,16 @@ pipeline {
         label 'master'
       }
       steps {
-        ansiblePlaybook(
-           credentialsId: 'my_key', 
-           inventory: '/etc/ansible/hosts', 
-           playbook: '/var/lib/jenkins/playbooks/ec2-test.yml',
-           extraVars: [
-              path: '${env.WORKSPACE}/${env.JOB_NAME}', 
-              BUILD_NUMBER: '${env.BUILD_NUMBER}'
-           ])
+        sshagent (credentials: ['jenkins_key']) {
+                    ansiblePlaybook(
+                       credentialsId: 'jenkins_key', 
+                       inventory: '/etc/ansible/hosts', 
+                       playbook: '/var/lib/jenkins/playbooks/ec2-test.yml',
+                       extraVars: [
+                          path: '${env.WORKSPACE}/${env.JOB_NAME}', 
+                          BUILD_NUMBER: '${env.BUILD_NUMBER}'
+                       ])
+        }
       }
     }
 
