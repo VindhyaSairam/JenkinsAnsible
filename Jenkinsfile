@@ -43,8 +43,8 @@ pipeline {
                        inventory: '/etc/ansible/hosts', 
                        playbook: '/var/lib/jenkins/playbooks/ec2-test.yml',
                        extraVars: [
-                          path: '~/${env.WORKSPACE}/${env.JOB_NAME}', 
-                          BUILD_NUMBER: '${env.BUILD_NUMBER}'
+                          path: "${env.WORKSPACE}/${env.JOB_NAME}", 
+                          BUILD_NUMBER: "${env.BUILD_NUMBER}"
                        ])
         }
       }
