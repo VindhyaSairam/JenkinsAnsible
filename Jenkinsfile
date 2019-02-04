@@ -37,9 +37,9 @@ pipeline {
         label 'master'
       }
       steps {
-        sshagent (credentials: ['/var/lib/jenkins/jenkins_key']) {
+        sshagent (credentials: ['jenkins_key']) {
                     ansiblePlaybook(
-                       credentialsId: '/var/lib/jenkins/jenkins_key', 
+                       credentialsId: 'jenkins_key', 
                        inventory: '/etc/ansible/hosts', 
                        playbook: '/var/lib/jenkins/playbooks/ec2-test.yml',
                        extraVars: [
